@@ -1,0 +1,33 @@
+<div ng-controller="OrdersController as vm">
+  <div class="field has-addons">
+    <div class="control">
+      <input class="input input-search" type="text" ng-model="vm.q" ng-keydown="$event.keyCode === 13 && vm.search()">
+    </div>
+    <div class="control">
+      <a class="button is-info" ng-click="vm.search()">
+        Αναζήτηση
+      </a>
+    </div>
+  </div>
+  <label>Από</label>&nbsp;<input type="text" id="datepicker-from">
+  <label>Έως</label>&nbsp;<input type="text" id="datepicker-to">
+  <button class="button is-small" ng-click="vm.searchByDate()">Αναζήτηση</button>
+  <hr>
+  <table class="table orders-table">
+    <thead>
+      <tr>
+        <th>Ημερομηνία</th>
+        <th>Αυτοκίνητο</th>
+        <th>Πελάτης</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="order in vm.orders" ui-sref="order({ orderId: order.id })">
+        <td>{{ order.date }}</td>
+        <td>{{ order.vehicle.brand }}&nbsp;{{ order.vehicle.model }}</td>
+        <td>{{ order.customer.firstname }}&nbsp;{{ order.customer.lastname }}</td>
+      </tr>
+    <tbody>
+  </table>
+  <div class="title is-6" ng-if="vm.orders.length === 0">Δεν βρέθηκαν αποτελέσματα</div>
+</div>

@@ -1,0 +1,77 @@
+html, body {
+  font-family: 'Open Sans', serif;
+  font-size: 16px;
+  line-height: 1.5;
+  height: 100%;
+  /*background: #ECF0F3;*/
+}
+
+nav.navbar {
+  border-top: 4px solid #276cda;
+  margin-bottom: 1rem;
+}
+.navbar-item.brand-text {
+  font-weight: 300;
+}
+.navbar-item, .navbar-link {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+a.disabled {
+  color: #CCC !important;
+  cursor: not-allowed;
+}
+
+.modal-card {
+  width: 800px !important;
+}
+
+.input-search {
+  width: 400px !important;
+}
+
+.circle-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: #EFEFEF;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+input {
+  text-transform: uppercase;
+}
+
+.customer-details > div, .vehicle-details > div, .order-details > div, .invoice-details > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.customer-details > div label > .vehicle-details > div label, .order-details > div label, .invoice-details > div label {
+  font-weight: bold;
+}
+
+table.customers-table tr, table.vehicles-table, table.orders-table, table.invoices-table {
+  cursor: pointer;
+}
+
+table.customers-table tr:hover, table.vehicles-table tr:hover, table.orders-table tr:hover, table.invoices-table tr:hover {
+  background: #EFEFEF;
+}
+
+.order-details table td {
+  text-align: center;
+}
+
+.order-details {
+  background: #FFFF9A;
+}
+
+.customer-details, .vehicle-details {
+  background: #DDE7FF;
+}

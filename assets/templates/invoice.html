@@ -1,0 +1,56 @@
+<div ng-controller="InvoiceController as vm">
+  <div class="columns">
+    <div class="column invoice-details">
+      <div>
+        <label>Τόπος</label><span>{{ vm.invoice.place }}</span>
+      </div>
+      <div>
+        <label>Ημ/νία</label><span>{{ vm.invoice.date }}</span>
+      </div>
+      <div>
+        <label>Επωνυμία</label><span>{{ vm.invoice.name }}</span>
+      </div>
+      <div>
+        <label>Επάγγελμα</label><span>{{ vm.invoice.profession }}</span>
+      </div>
+      <div>
+        <label>Διεύθυνση</label><span>{{ vm.invoice.address }}</span>
+      </div>
+      <div>
+        <label>Πόλη</label><span>{{ vm.invoice.city }}</span>
+      </div>
+      <div>
+        <label>Δ.Ο.Υ.</label><span>{{ vm.invoice.doy }}</span>
+      </div>
+      <div>
+        <label>Α.Φ.Μ.</label><span>{{ vm.invoice.afm }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="columns">
+    <div class="column">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Κωδικός</th>
+            <th>Περιγραφή</th>
+            <th>Ποσότητα</th>
+            <th>Τιμή μονάδας</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="product in vm.invoice.products">
+            <td>{{ product.code }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.price }}</td>
+          </tr>
+          <tr>
+            <th colspan="3">Σύνολο:</th>
+            <th colspan="4">{{ vm.invoice.totalPrice }}</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

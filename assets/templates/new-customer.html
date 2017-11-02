@@ -1,0 +1,110 @@
+<div ng-controller="NewCustomerController as vm">
+
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <label class="label">Επώνυμο</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.customer.lastname">
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="field">
+        <label class="label">Όνομα</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.customer.firstname">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <label class="label">Α.Φ.Μ.</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.customer.afm">
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="field">
+        <label class="label">ΔΟΥ</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.customer.doy">
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="field">
+        <label class="label">Επάγγελμα</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.customer.profession">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <label class="label">Πόλη</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.customer.city">
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="field">
+        <label class="label">Οδός</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.customer.address">
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="field">
+        <label class="label">Τ.Κ.</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.customer.zip">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <label class="label">Τηλέφωνο</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.customer.phone">
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="field">
+        <label class="label">Κινητό Τηλέφωνο</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.customer.mobile">
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="field">
+        <label class="label">Κινητό Τηλέφωνο 2o</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.customer.mobile2">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="field">
+    <div class="control">
+      <button class="button is-link" ng-click="vm.submit()">ΕΓΓΡΑΦΗ</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,134 @@
+<div ng-controller="CustomerController as vm">
+  <div class="columns">
+    <!-- <div class="column"></div> -->
+    <div class="column customer-details">
+      <div>
+        <label>Όνομα</label><span>{{ vm.customer.firstname }}&nbsp;{{ vm.customer.lastname }}</span>
+      </div>
+      <div>
+        <label>Α.Φ.Μ.</label><span>{{ vm.customer.afm }}</span>
+      </div>
+      <div>
+        <label>ΔΟΥ</label><span>{{ vm.customer.doy }}</span>
+      </div>
+      <div>
+        <label>Επάγγελμα</label><span>{{ vm.customer.profession }}</span>
+      </div>
+      <div>
+        <label>Διεύθυνση</label><span>{{ vm.customer.address }},&nbsp;{{ vm.customer.zip }}</span>
+      </div>
+      <div>
+        <label>Πόλη</label><span>{{ vm.customer.city }}</span>
+      </div>
+      <div>
+        <label>Τηλέφωνο</label><span>{{ vm.customer.phone }}</span>
+      </div>
+      <div>
+        <label>Κινητό</label><span>{{ vm.customer.mobile }}</span>
+      </div>
+      <div>
+        <label>Κινητό 2</label><span>{{ vm.customer.mobile2 }}</span>
+      </div>
+      <hr>
+      <!-- <div class="title is-6">ΑΥΤΟΚΙΝΗΤΑ</div> -->
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Μάρκα</th>
+            <th>Μοντέλο</th>
+            <th>Αρ.Κυκλοφορίας</ht>
+            <th>Ημ/νία 1ης αδείας</th>
+            <th>Καύσιμο</ht>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="vehicle in vm.customer.vehicles">
+            <td>{{ vehicle.brand }}</td>
+            <td>{{ vehicle.model }}</td>
+            <td>{{ vehicle.plate }}</td>
+            <td>{{ vehicle.date }}</td>
+            <td>{{ vehicle.fuel }}</td>
+            <td><button class="button is-link is-small" ui-sref="vehicle({ vehicleId: vehicle.id })"><i class="fa fa-info"></i></button></td>
+            <td><button class="button is-small" ng-click="vm.deleteVehicle(vehicle.id)"><i class="fa fa-times"></i></button>
+          </tr>
+        </tbody>
+      </table>
+      <button class="button is-info is-small" ng-click="vm.search.isActive = true">ΝΕΟ ΑΥΤΟΚΙΝΗΤΟ</button>
+    </div>
+    <div class="column is-one-third">
+      <div class="dropdown" ng-class="{ 'is-active': vm.options.isActive }">
+        <div class="dropdown-trigger">
+          <button class="button" ng-click="vm.options.isActive = !vm.options.isActive">
+            <span>ΕΠΙΛΟΓΕΣ</span>
+            <span class="icon is-small">
+              <i ng-show="!vm.options.isActive" class="fa fa-angle-down"></i>
+              <i ng-show="vm.options.isActive" class="fa fa-angle-up"></i>
+            </span>
+          </button>
+          <!-- <div class="circle-button" ng-click="vm.options.isActive = !vm.options.isActive"><i class="fa fa-cogs"></i></div> -->
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content">
+            <a ui-sref="edit-customer({ customerId: vm.customer.id })" class="dropdown-item">
+              <i class="fa fa-edit"></i>
+              Επεξεργασία
+            </a>
+            <a class="dropdown-item" ng-click="vm.deleteCustomer()">
+              <i class="fa fa-close"></i>
+              Διαγραφή
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" ng-class="{ 'is-active': vm.search.isActive }">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">ΑΝΑΖΗΤΗΣΗ ΑΥΤΟΚΙΝΗΤΟΥ</p>
+        <button class="delete" ng-click="vm.search.isActive = false"></button>
+      </header>
+      <section class="modal-card-body">
+        <div>
+          <div class="field has-addons">
+            <div class="control">
+              <input class="input input-search" type="text" ng-model="vm.q" ng-keydown="$event.keyCode === 13 && vm.search()">
+            </div>
+            <div class="control">
+              <a class="button is-info" ng-click="vm.search()">
+                Αναζήτηση
+              </a>
+            </div>
+          </div>
+          <table class="table vehicles-table">
+            <thead>
+              <tr>
+                <th>Μάρκα</th>
+                <th>Μοντέλο</th>
+                <th>Αρ.Κυκλοφορίας</ht>
+                <th>Ημ/νία 1ης αδείας</th>
+                <th>Καύσιμο</ht>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="vehicle in vm.search.vehicles" ng-click="vm.addVehicle(vehicle.id)">
+                <td>{{ vehicle.brand }}</td>
+                <td>{{ vehicle.model }}</td>
+                <td>{{ vehicle.plate }}</td>
+                <td>{{ vehicle.date }}</td>
+                <td>{{ vehicle.fuel }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="title is-6" ng-if="vm.search.vehicles.length === 0">Δεν βρέθηκαν αποτελέσματα</div>
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button" ng-click="vm.search.isActive = false">ΚΛΕΙΣΙΜΟ</button>
+      </footer>
+    </div>
+  </div>
+
+</div>

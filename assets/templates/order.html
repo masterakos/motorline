@@ -1,0 +1,42 @@
+<div ng-controller="OrderController as vm">
+  <div class="columns">
+    <!-- <div class="column"></div> -->
+    <div class="column order-details">
+      <div class="title is-4">ΕΝΤΟΛΗ ΕΡΓΑΣΙΑΣ</div>
+      <div>
+        <label>Ημ/νία</label><span>{{ vm.order.date }}</span>
+      </div>
+      <div>
+        <label>Όνομα</label><span>{{ vm.order.customer.firstname }}&nbsp;{{ vm.order.customer.lastname }}&nbsp;<button class="button is-link is-small" ui-sref="customer({ customerId: vm.order.customer.id })"><i class="fa fa-info"></i></button></span>
+      </div>
+      <div>
+        <label>Α.Φ.Μ.</label><span>{{ vm.order.customer.afm }}</span>
+      </div>
+      <div>
+        <label>Αυτοκίνητο</label><span>{{ vm.order.vehicle.brand }}&nbsp;{{ vm.order.vehicle.model }}&nbsp;<button class="button is-link is-small" ui-sref="vehicle({ vehicleId: vm.order.vehicle.id })"><i class="fa fa-info"></i></button></span>
+      </div>
+      <hr>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Κωδικός</th>
+            <th>Περιγραφή</th>
+            <th>Ποσότητα</ht>
+            <th>Τιμή μονάδος</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="product in vm.order.products">
+            <td>{{ product.code }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.price.replace('.', ',') }}</td>
+          </tr>
+          <tr>
+            <th colspan="2">Τελικό ποσό:<th>
+            <td colspan="3">{{ vm.order.productsFinal }}<td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>

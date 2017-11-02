@@ -1,0 +1,112 @@
+<div ng-controller="NewInvoiceController as vm">
+  <div class="columns">
+    <div class="column">
+      <button class="button is-link is-pulled-right" ng-click="vm.submit()"><i class="fa fa-save"></i>&nbsp;ΑΠΟΘΗΚΕΥΣΗ</button>
+    </div>
+  </div>
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <label class="label">Τόπος</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.invoice.place">
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="field">
+        <label class="label">Ημ/νία</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.invoice.date" id="datepicker-date">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <label class="label">Επωνυμία</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.invoice.name">
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="field">
+        <label class="label">Επάγγελμα</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.invoice.profession">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <label class="label">Διεύθυνση</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.invoice.address">
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="field">
+        <label class="label">Πόλη</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.invoice.city">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <label class="label">Δ.Ο.Υ</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.invoice.doy">
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="field">
+        <label class="label">Α.Φ.Μ.</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.invoice.afm">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Κωδικός</th>
+            <th>Περιγραφή</th>
+            <th>Ποσότητα</th>
+            <th>Τιμή μονάδας</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="product in vm.invoice.products">
+            <td>{{ product.code }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.price }}</td>
+          </tr>
+          <tr>
+            <td><input class="input is-small" type="text" ng-model="vm.newProduct.code"/></td>
+            <td><input class="input is-small" style="width:250px" type="text" ng-model="vm.newProduct.description"/></td>
+            <td><input class="input is-small" type="text" ng-model="vm.newProduct.quantity"/></td>
+            <td><input class="input is-small" type="text" ng-model="vm.newProduct.price"/></td>
+            <td><button class="button is-small" ng-click="vm.addProduct()">ΚΑΤΑΧΩΡΗΣΗ</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

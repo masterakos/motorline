@@ -1,0 +1,86 @@
+<div ng-controller="EditVehicleController as vm">
+
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <label class="label">Μάρκα</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.vehicle.brand">
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="field">
+        <label class="label">Μοντέλο</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.vehicle.model">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <label class="label">Αρ.Κυκλοφορίας</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.vehicle.plate">
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="field">
+        <label class="label">Αρ.Πλαισίου</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.vehicle.chassis">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <label class="label">Ημ/νία 1ης αδείας</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.vehicle.date">
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="field">
+        <label class="label">Αρ.Κινητήρα</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.vehicle.engine">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <label class="label">Κυβικά</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.vehicle.cc">
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="field">
+        <label class="label">Καύσιμο</label>
+        <div class="control">
+          <input class="input" type="text" ng-model="vm.vehicle.fuel">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="field">
+    <div class="control">
+      <button class="button is-link" ng-click="vm.submit()"><i class="fa fa-save"></i>&nbsp;ΑΠΟΘΗΚΕΥΣΗ</button>
+    </div>
+  </div>
+</div>

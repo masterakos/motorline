@@ -1,0 +1,26 @@
+{
+  "name": "codeigniter",
+  "authors": [
+    "Kostas Tsalikidis <tsalikidhs@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "popper.js": "^1.12.5",
+    "bulma": "^0.6.0",
+    "font-awesome": "^4.7.0",
+    "angular": "^1.6.6",
+    "angular-ui-router": "^1.0.10",
+    "pikaday": "^1.6.1",
+    "moment": "^2.19.1"
+  }
+}

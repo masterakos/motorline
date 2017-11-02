@@ -1,0 +1,154 @@
+<div ng-controller="VehicleController as vm">
+  <div class="columns">
+    <!-- <div class="column"></div> -->
+    <div class="column vehicle-details">
+      <div>
+        <label>Μάρκα</label><span>{{ vm.vehicle.brand }}</span>
+      </div>
+      <div>
+        <label>Μοντέλο</label><span>{{ vm.vehicle.model }}</span>
+      </div>
+      <div>
+        <label>Αρ.Κυκλοφορίας</label><span>{{ vm.vehicle.plate }}</span>
+      </div>
+      <div>
+        <label>Αρ.Πλαισίου</label><span>{{ vm.vehicle.chassis }}</span>
+      </div>
+      <div>
+        <label>Ημ/νία 1ης αδείας</label><span>{{ vm.vehicle.date }}</span>
+      </div>
+      <div>
+        <label>Κυβικά</label><span>{{ vm.vehicle.cc }}</span>
+      </div>
+      <div>
+        <label>Αρ.Κινητήρα</label><span>{{ vm.vehicle.engine }}</span>
+      </div>
+      <div>
+        <label>Καύσιμο</label><span>{{ vm.vehicle.fuel }}</span>
+      </div>
+      <hr>
+      <!-- <div class="title is-6">ΙΔΙΟΚΤΗΤΕΣ</div> -->
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Όνομα</th>
+            <th>Επώνυμο</th>
+            <th>ΑΦΜ</ht>
+            <th>Πόλη</th>
+            <th>Κινητό Τηλ.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="customer in vm.vehicle.customers">
+            <td>{{ customer.firstname }}</td>
+            <td>{{ customer.lastname }}</td>
+            <td>{{ customer.afm }}</td>
+            <td>{{ customer.city }}</td>
+            <td>{{ customer.mobile }}</td>
+            <td><button class="button is-link is-small" ui-sref="customer({ customerId: customer.id })"><i class="fa fa-info"></i></button></td>
+            <td><button class="button is-small" ng-click="vm.deleteCustomer(customer.id)"><i class="fa fa-times"></i></button>
+          </tr>
+        </tbody>
+      </table>
+      <button class="button is-info is-small" ng-click="vm.search.isActive = true">ΝΕΟΣ ΙΔΙΟΚΤΗΤΗΣ</button>
+    </div>
+    <div class="column">
+      <div class="dropdown" ng-class="{ 'is-active': vm.options.isActive }">
+        <div class="dropdown-trigger">
+          <button class="button" ng-click="vm.options.isActive = !vm.options.isActive">
+            <span>ΕΠΙΛΟΓΕΣ</span>
+            <span class="icon is-small">
+              <i ng-show="!vm.options.isActive" class="fa fa-angle-down"></i>
+              <i ng-show="vm.options.isActive" class="fa fa-angle-up"></i>
+            </span>
+          </button>
+          <!-- <div class="circle-button" ng-click="vm.options.isActive = !vm.options.isActive"><i class="fa fa-cogs"></i></div> -->
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content">
+            <a ui-sref="edit-vehicle({ vehicleId: vm.vehicle.id })" class="dropdown-item">
+              <i class="fa fa-edit"></i>
+              Επεξεργασία
+            </a>
+            <a class="dropdown-item" ng-click="vm.deleteVehicle()">
+              <i class="fa fa-close"></i>
+              Διαγραφή
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="columns">
+    <div class="column">
+      <div class="title is-4">ΕΝΤΟΛΕΣ ΕΡΓΑΣΙΑΣ</div>
+      <table class="table orders-table">
+        <thead>
+          <tr>
+            <th>Ημερομηνία</th>
+            <th>Αυτοκίνητο</th>
+            <th>Πελάτης</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="order in vm.vehicle.orders" ui-sref="order({ orderId: order.id })">
+            <td>{{ order.date }}</td>
+            <td>{{ order.vehicle.brand }}&nbsp;{{ order.vehicle.model }}</td>
+            <td>{{ order.customer.firstname }}&nbsp;{{ order.customer.lastname }}</td>
+          </tr>
+        <tbody>
+      </table>
+      <div class="title is-6" ng-if="vm.vehicle.orders.length === 0">Καμία εντολή εργασίας</div>
+    </div>
+  </div>
+
+  <div class="modal" ng-class="{ 'is-active': vm.search.isActive }">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">ΑΝΑΖΗΤΗΣΗ ΠΕΛΑΤΗ</p>
+        <button class="delete" ng-click="vm.search.isActive = false"></button>
+      </header>
+      <section class="modal-card-body">
+        <div>
+          <div class="field has-addons">
+            <div class="control">
+              <input class="input input-search" type="text" ng-model="vm.q" ng-keydown="$event.keyCode === 13 && vm.search.search()">
+            </div>
+            <div class="control">
+              <a class="button is-info" ng-click="vm.search.search()">
+                Αναζήτηση
+              </a>
+            </div>
+          </div>
+          <table class="table customers-table">
+            <thead>
+              <tr>
+                <th>Επώνυμο</th>
+                <th>Όνομα</th>
+                <th>ΑΦΜ</ht>
+                <th>Πόλη</th>
+                <th>Κινητό Τηλ.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="customer in vm.search.customers" ng-click="vm.addCustomer(customer.id)">
+                <td>{{ customer.lastname }}</td>
+                <td>{{ customer.firstname }}</td>
+                <td>{{ customer.afm }}</td>
+                <td>{{ customer.city }}</td>
+                <td>{{ customer.mobile }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="title is-6" ng-if="vm.search.customers.length === 0">Δεν βρέθηκαν αποτελέσματα</div>
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button" ng-click="vm.search.isActive = false">ΚΛΕΙΣΙΜΟ</button>
+      </footer>
+    </div>
+  </div>
+
+</div>
