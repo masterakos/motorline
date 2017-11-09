@@ -46,13 +46,13 @@ input {
   text-transform: uppercase;
 }
 
-.customer-details > div, .vehicle-details > div, .order-details > div, .invoice-details > div {
+.customer-details > div, .vehicle-details > div, .order-details > div, .invoice-details > div, .vehicle-gas-details > div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.customer-details > div label > .vehicle-details > div label, .order-details > div label, .invoice-details > div label {
+.customer-details > div label > .vehicle-details > div label, .order-details > div label, .invoice-details > div label, .vehicle-gas-details > div label {
   font-weight: bold;
 }
 
@@ -75,3 +75,8 @@ table.customers-table tr:hover, table.vehicles-table tr:hover, table.orders-tabl
 .customer-details, .vehicle-details {
   background: #DDE7FF;
 }
+.vehicle-gas-details { white-space: nowrap; }
+.vehicle-gas-details > div:nth-child(odd) { background-color: #FFF; }
+.vehicle-gas-details > div:nth-child(even) { background: #DDE7FF; }
+.vehicle-gas-details > div { padding: 5px; }
+.vehicle-gas-details input { margin: 0px 5px; }

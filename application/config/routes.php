@@ -64,6 +64,7 @@ $route['vehicles/new'] = 'vehicles/insert';
 $route['vehicles/search'] = 'vehicles/search';
 $route['vehicles/delete/(:num)'] = 'vehicles/delete/$1';
 $route['vehicles/update/(:num)'] = 'vehicles/update/$1';
+$route['vehicles/(:num)/gas/update'] = 'vehicles/gas_update/$1';
 
 $route['orders'] = 'orders/index';
 $route['orders/(:num)'] = 'orders/get/$1';

@@ -30,6 +30,17 @@
       <div class="column is-3">
         <aside class="menu">
           <p class="menu-label">
+            Γενικά
+          </p>
+          <ul class="menu-list">
+            <li>
+              <ul>
+                <li><a ui-sref="new-customer-full" ng-class="{'is-active': vm.currentPath == 'new-customer-full'}">Νέα Καταχώρηση Πελάτη</a></li>
+                <!-- <li><a ui-sref="customers">Αναζήτηση</a></li> -->
+              </ul>
+            </li>
+          </ul>
+          <p class="menu-label">
             Πελάτες
           </p>
           <ul class="menu-list">

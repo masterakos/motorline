@@ -15,6 +15,8 @@ angular
           vm.vehicle[key] = vm.vehicle[key].toUpperCase();
       }
 
+      delete vm.vehicle.gas;
+
       $http({
         url: 'vehicles/update/' + $stateParams.vehicleId,
         method: 'POST',

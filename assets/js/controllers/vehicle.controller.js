@@ -17,6 +17,19 @@ angular
       customers: []
     };
 
+    vm.gas = {
+      isActive: false,
+      save: function() {
+        $http({
+          url: 'vehicles/' + vm.vehicle.id + '/gas/update',
+          method: 'POST',
+          data: vm.vehicle.gas
+        }).then(function(response) {
+          vm.gas.isActive = false;
+        });
+      }
+    };
+
     vm.deleteVehicle = function() {
       if (confirm("ΔΙΑΓΡΑΦΗ ΑΥΤΟΚΙΝΗΤΟΥ;")) {
         $http({

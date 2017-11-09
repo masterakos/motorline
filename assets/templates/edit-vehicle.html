@@ -70,7 +70,14 @@
       <div class="field">
         <label class="label">Καύσιμο</label>
         <div class="control">
-          <input class="input" type="text" ng-model="vm.vehicle.fuel">
+          <!-- <input class="input" type="text" ng-model="vm.vehicle.fuel"> -->
+          <div class="select">
+            <select ng-model="vm.vehicle.fuel">
+              <option value="ΒΕΝΖΙΝΗ">ΒΕΝΖΙΝΗ</option>
+              <option value="ΠΕΤΡΕΛΑΙΟ">ΠΕΤΡΕΛΑΙΟ</option>
+              <option value="ΒΕΝΖΙΝΗ-ΥΓΡΑΕΡΙΟ">ΒΕΝΖΙΝΗ - ΥΓΡΑΕΡΙΟ</option>
+            </select>
+          </div>
         </div>
       </div>
     </div>

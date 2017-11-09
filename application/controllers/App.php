@@ -41,6 +41,7 @@ class App extends CI_Controller {
         'js/controllers/new-invoice.controller.js',
         'js/controllers/invoice.controller.js',
         'js/controllers/invoices.controller.js',
+        'js/controllers/new-customer-full.controller.js',
       )
     );
 

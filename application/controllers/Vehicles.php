@@ -18,6 +18,33 @@ class Vehicles extends CI_Controller {
     print json_encode($vehicles);
   }
 
+  public function gas_update($id) {
+    $post_data = json_decode(file_get_contents('php://input'));
+    if ($this->db->get_where('vehicles_gas', array('vehicle_id' => $id))->row() === NULL) {
+      $query = $this->db->insert('vehicles_gas', array(
+        'vehicle_id' => $id,
+        'lung' => $post_data->lung->number . '-' . $post_data->lung->approval,
+        'electrovalve' => $post_data->electrovalve->number . '-' . $post_data->electrovalve->approval,
+        'tank' => $post_data->tank->number . '-' . $post_data->tank->approval . '-' . $post_data->tank->capacity . '-' . $post_data->tank->date,
+        'airtight' => $post_data->airtight->number . '-' . $post_data->airtight->approval,
+        'multivalve' => $post_data->multiValve->number . '-' . $post_data->multiValve->approval,
+        'filling' => $post_data->filling->number . '-' . $post_data->filling->approval,
+        'brain' => $post_data->brain->number . '-' . $post_data->brain->approval,
+      ));
+    } else {
+      $query = $this->db->update('vehicles_gas', array(
+        'lung' => $post_data->lung->number . '-' . $post_data->lung->approval,
+        'electrovalve' => $post_data->electrovalve->number . '-' . $post_data->electrovalve->approval,
+        'tank' => $post_data->tank->number . '-' . $post_data->tank->approval . '-' . $post_data->tank->capacity . '-' . $post_data->tank->date,
+        'airtight' => $post_data->airtight->number . '-' . $post_data->airtight->approval,
+        'multivalve' => $post_data->multiValve->number . '-' . $post_data->multiValve->approval,
+        'filling' => $post_data->filling->number . '-' . $post_data->filling->approval,
+        'brain' => $post_data->brain->number . '-' . $post_data->brain->approval,
+      ), array('vehicle_id' => $id));
+    }
+    print json_encode($post_data);
+  }
+
   public function get($id) {
     $vehicle = $this->Vehicle->get($id);
 
@@ -31,6 +58,19 @@ class Vehicles extends CI_Controller {
       $order['vehicle'] = $this->db->get_where('vehicles', array('id' => $order['vehicle_id']))->row_array();
     }
     $vehicle['orders'] = $orders;
+
+    $vehicle['gas'] = $this->db->get_where('vehicles_gas', array('vehicle_id' => $vehicle['id']))->row_array();
+    $gas_keys = ['number', 'approval', 'capacity', 'date'];
+    if ($vehicle['gas']) {
+      foreach ($vehicle['gas'] as &$property) {
+        $clues = explode('-', $property);
+        $property = [];
+        for ($i = 0; $i < count($clues); $i++) {
+          $property[$gas_keys[$i]] = $clues[$i];
+        }
+      }
+      $vehicle['gas']['multiValve'] = $vehicle['gas']['multivalve'];
+    }
 
     print json_encode($vehicle);
   }
@@ -53,7 +93,7 @@ class Vehicles extends CI_Controller {
       if ($already_exists) {
         print json_encode(array(
           'status' => "error",
-          'error' => "already exists"
+          'error' => "vehicle already exists"
         ));
         exit;
       }

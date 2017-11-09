@@ -39,8 +39,11 @@ angular
           method: 'POST',
           data: vm.vehicle
         }).then(function(response) {
+          console.log(response.data.error)
           if (response.data.status == 'ok') {
             $state.go('vehicle', { vehicleId: response.data.vehicle.id });
+          } else if (response.data.error == 'vehicle already exists') {
+              alert('Το αυτοκίνητο υπάρχει ήδη');
           } else {
             alert(response.data.error);
           }

@@ -26,13 +26,16 @@
       <div>
         <label>Καύσιμο</label><span>{{ vm.vehicle.fuel }}</span>
       </div>
+      <div>
+        <label>Υγραέριο</label><button class="button is-small" ng-click="vm.gas.isActive = true"><i class="fa fa-cog"></i></button></span>
+      </div>
       <hr>
       <!-- <div class="title is-6">ΙΔΙΟΚΤΗΤΕΣ</div> -->
       <table class="table">
         <thead>
           <tr>
-            <th>Όνομα</th>
             <th>Επώνυμο</th>
+            <th>Όνομα</th>
             <th>ΑΦΜ</ht>
             <th>Πόλη</th>
             <th>Κινητό Τηλ.</th>
@@ -40,8 +43,8 @@
         </thead>
         <tbody>
           <tr ng-repeat="customer in vm.vehicle.customers">
-            <td>{{ customer.firstname }}</td>
             <td>{{ customer.lastname }}</td>
+            <td>{{ customer.firstname }}</td>
             <td>{{ customer.afm }}</td>
             <td>{{ customer.city }}</td>
             <td>{{ customer.mobile }}</td>
@@ -147,6 +150,76 @@
       </section>
       <footer class="modal-card-foot">
         <button class="button" ng-click="vm.search.isActive = false">ΚΛΕΙΣΙΜΟ</button>
+      </footer>
+    </div>
+  </div>
+
+  <div class="modal" ng-class="{ 'is-active': vm.gas.isActive }">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">ΣΤΟΙΧΕΙΑ ΥΓΡΑΕΡΙΟΥ</p>
+        <button class="delete" ng-click="vm.gas.isActive = false"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="columns">
+          <div class="column vehicle-gas-details">
+            <div>
+              <label>Πνεύμονας</label><input class="input is-small" type="text" ng-model="vm.vehicle.gas.lung.number">
+            </div>
+            <div>
+              <label>Ηλεκτροβαλβίδα</label><input class="input is-small" type="text" ng-model="vm.vehicle.gas.electrovalve.number">
+            </div>
+            <div>
+              <label>Δεξαμενή</label><input class="input is-small" type="text" ng-model="vm.vehicle.gas.tank.number">
+            </div>
+            <div>
+              <label>Χωρητικότητα</label><input class="input is-small" type="text" ng-model="vm.vehicle.gas.tank.capacity">
+            </div>
+            <div>
+              <label>Αεροστεγές</label><input class="input is-small" type="text" ng-model="vm.vehicle.gas.airtight.number">
+            </div>
+            <div>
+              <label>Πολλαπλή Βαλβίδα</label><input class="input is-small" type="text" ng-model="vm.vehicle.gas.multiValve.number">
+            </div>
+            <div>
+              <label>Πλήρωση</label><input class="input is-small" type="text" ng-model="vm.vehicle.gas.filling.number"><span>
+            </div>
+            <div>
+              <label>Εγκέφαλος</label><input class="input is-small" type="text" ng-model="vm.vehicle.gas.brain.number">
+            </div>
+          </div>
+          <div class="column vehicle-gas-details">
+            <div>
+              <label>Αρ. Έγκρισης</label><input class="input is-small" type="text" ng-model="vm.vehicle.gas.lung.approval">
+            </div>
+            <div>
+              <label>Αρ. Έγκρισης</label><input class="input is-small" type="text" ng-model="vm.vehicle.gas.electrovalve.approval">
+            </div>
+            <div>
+              <label>Αρ. Έγκρισης</label><input class="input is-small" type="text" ng-model="vm.vehicle.gas.tank.approval">
+            </div>
+            <div>
+              <label>Έτος μήνας κατασκευής</label><input class="input is-small" type="text" ng-model="vm.vehicle.gas.tank.date">
+            </div>
+            <div>
+              <label>Αρ. Έγκρισης</label><input class="input is-small" type="text" ng-model="vm.vehicle.gas.airtight.approval">
+            </div>
+            <div>
+              <label>Αρ. Έγκρισης</label><input class="input is-small" type="text" ng-model="vm.vehicle.gas.multiValve.approval">
+            </div>
+            <div>
+              <label>Αρ. Έγκρισης</label><input class="input is-small" type="text" ng-model="vm.vehicle.gas.filling.approval">
+            </div>
+            <div>
+              <label>Αρ. Έγκρισης</label><input class="input is-small" type="text" ng-model="vm.vehicle.gas.brain.approval">
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-link" ng-click="vm.gas.save()"><i class="fa fa-save"></i>&nbsp;ΑΠΟΘΗΚΕΥΣΗ</button>
+        <button class="button" ng-click="vm.gas.isActive = false">ΚΛΕΙΣΙΜΟ</button>
       </footer>
     </div>
   </div>

@@ -84,6 +84,12 @@ angular
         templateUrl: 'assets/templates/invoices.html'
       });
 
+    $stateProvider
+      .state({
+        name: 'new-customer-full',
+        url: '/new-customer-full',
+        templateUrl: 'assets/templates/new-customer-full.html'
+      });
 
     $urlRouterProvider.otherwise('/');
   });

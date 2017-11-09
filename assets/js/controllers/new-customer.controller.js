@@ -38,6 +38,8 @@ angular
         }).then(function(response) {
           if (response.data.status == 'ok') {
             $state.go('customer', { customerId: response.data.customer.id });
+          } else if (response.data.error == 'customer already exists') {
+            alert('Ο πελάτης υπάρχει ήδη');
           } else {
             alert(response.data.error);
           }

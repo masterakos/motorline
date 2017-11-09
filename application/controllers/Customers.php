@@ -38,7 +38,7 @@ class Customers extends CI_Controller {
       if ($post_data->afm && $already_exists) {
         print json_encode(array(
           'status' => "error",
-          'error' => "already exists"
+          'error' => "customer already exists"
         ));
         exit;
       }
