@@ -13,13 +13,19 @@ angular
     };
 
     vm.search = {
-      isActive: false,
-      customers: []
+      isActive: false
     };
 
     vm.gas = {
       isActive: false,
       save: function() {
+        for (var key in vm.vehicle.gas) {
+          ['number', 'approval', 'capacity', 'date'].forEach(function(prop) {
+            if (prop in vm.vehicle.gas[key]) {
+              vm.vehicle.gas[key][prop] = vm.vehicle.gas[key][prop].replace('-', '/');  
+            }
+          });
+        }
         $http({
           url: 'vehicles/' + vm.vehicle.id + '/gas/update',
           method: 'POST',

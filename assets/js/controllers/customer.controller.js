@@ -12,6 +12,10 @@ angular
       isActive: false
     };
 
+    vm.search = {
+      isActive: false
+    };
+
     vm.deleteCustomer = function() {
       if (confirm("ΔΙΑΓΡΑΦΗ ΠΕΛΑΤΗ;")) {
         $http({
@@ -24,7 +28,7 @@ angular
       }
     };
 
-    vm.search = function() {
+    vm.search.search = function() {
       if (!vm.q) return;
       $http({
         url: 'vehicles/search?q=' + vm.q,
